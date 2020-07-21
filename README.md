@@ -14,9 +14,9 @@ Researchers can work with financial consultants to identify which products/instr
 
 #### Data Collection
 
-Data was collected from the below subreddits API
-[`/r/investing`](https://www.reddit.com/r/investing)
-[`/r/personalfinance`](https://www.reddit.com/r/personalfinance)
+Data was collected from the below subreddits API<br>
+[`/r/investing`](https://www.reddit.com/r/investing)<br>
+[`/r/personalfinance`](https://www.reddit.com/r/personalfinance)<br>
 A total of 1742 rows was collected
 - Investing - 842 rows
 - Personal Finance - 897 rows
