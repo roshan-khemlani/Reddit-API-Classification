@@ -1,122 +1,39 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 3: Web APIs & Classification
 
-### Description
+#### Problem Statement
 
-In week four we've learned about a few different classifiers. In week five we'll learn about webscraping, APIs, and Natural Language Processing (NLP). Now we're going to put those skills to the test.
+To classify Reddit posts from 2 different Subreddits, Personal Finance and Investing. We will be using Natural Language Processing (NLP) and Classification modelling, to
+predict which subreddit a given post belongs to.<br>
+The model should provide researchers an understanding of how the average retail investors feel towards to allocating a certain portion of their income for investments.
+Researchers can work with financial consultants to identify which products/instruments are more marketable and strive to focus on that product during their sales pitch.
 
-For project 3, your goal is two-fold:
+#### Description
+
 1. Using Reddit's API, you'll collect posts from two subreddits of your choosing.
 2. You'll then use NLP to train a classifier on which subreddit a given post came from. This is a binary classification problem.
 
+#### Data Collection
 
-#### About the API
+Data was collected from the below subreddits API
+[`/r/investing`](https://www.reddit.com/r/investing)
+[`/r/personalfinance`](https://www.reddit.com/r/personalfinance)
+A total of 1742 rows was collected
+- Investing - 842 rows
+- Personal Finance - 897 rows
 
-Reddit's API is fairly straightforward. For example, if I want the posts from [`/r/boardgames`](https://www.reddit.com/r/boardgames), all I have to do is add `.json` to the end of the url: https://www.reddit.com/r/boardgames.json
+#### Conclusion
 
-To help you get started, we have a primer video on how to use Reddit's API: https://www.youtube.com/watch?v=5Y3ZE26Ciuk
+The Naive Bayes with CountVectorizer and Logistic Regression with TfidfVectorizer worked very well with an high train and test score, even though both subreddits were almost in the same category.<br>
+Evaluated the model and notice the accuracy level is really high with 92% for Logistic Regression with TfidfVectorizer and 91.67% for Naive Bayes with CountVectorizer.<br>
+Model precision of Logistic Regression is slightly higher to Naive Bayes at 92.36% compared to 91.69%.<br>
+This could be attributed to the current market condition, with Covid-19 having a negative impact on job securities and financial stability.
+Hence more retail investors, would not want to venture into riskier investments and focus more to reduce their reliabilities.
 
----
+#### Recommendation
 
-### Requirements
+We can tune the parameters of the model, to get an more accurate however it's really time consuming.
+Hence I suggest to allocate more time on the modeling section, as it's really important to obatin the optimum results.<br>
 
-- Gather and prepare your data using the `requests` library.
-- **Create and compare two models**. One of these must be a Bayes classifier, however the other can be a classifier of your choosing: logistic regression, KNN, SVM, etc.
-- A Jupyter Notebook with your analysis for a peer audience of data scientists.
-- An executive summary of the results you found.
-- A short presentation outlining your process and findings for a semi-technical audience.
+Right now with investors appetite at a all time low, I would suggest financial consultants to work with their current and potential clients in other financial services like offering them to refinance with a lower interest rates, taking up insurance or short term saving plans with interest<br> 
 
-**Pro Tip 1:** You can find a good example executive summary [here](https://www.proposify.biz/blog/executive-summary).
-
-**Pro Tip 2:** Reddit will give you 25 posts **per request**. To get enough data, you'll need to hit Reddit's API **repeatedly** (most likely in a `for` loop). _Be sure to use the `time.sleep()` function at the end of your loop to allow for a break in between requests. **THIS IS CRUCIAL**_
-
-**Pro tip 3:** The API will cap you at 1,000 posts for each subreddit (assuming the subreddit has that many posts).
-
-**Pro tip 4:** At the end of each loop, be sure to save the results from your scrape as a `csv`: JSON from Reddit > Pandas DataFrame > CSV. That way, if something goes wrong in your loop, you won't lose all your data.
-
----
-
-### Necessary Deliverables / Submission
-
-- Code and executive summary must be in a clearly commented Jupyter Notebook.
-- You must submit your slide deck.
-- Materials must be submitted by **9:00 AM on Monday, May 18st**.
-
----
-
-## Rubric
-Your local instructor will evaluate your project (for the most part) using the following criteria.  You should make sure that you consider and/or follow most if not all of the considerations/recommendations outlined below **while** working through your project.
-
-For Project 3 the evaluation categories are as follows:<br>
-**The Data Science Process**
-- Problem Statement
-- Data Collection
-- Data Cleaning & EDA
-- Preprocessing & Modeling
-- Evaluation and Conceptual Understanding
-- Conclusion and Recommendations
-
-**Organization and Professionalism**
-- Organization
-- Visualizations
-- Python Syntax and Control Flow
-- Presentation
-
-**Scores will be out of 30 points based on the 10 categories in the rubric.** <br>
-*3 points per section*<br>
-
-| Score | Interpretation |
-| --- | --- |
-| **0** | *Project fails to meet the minimum requirements for this item.* |
-| **1** | *Project meets the minimum requirements for this item, but falls significantly short of portfolio-ready expectations.* |
-| **2** | *Project exceeds the minimum requirements for this item, but falls short of portfolio-ready expectations.* |
-| **3** | *Project meets or exceeds portfolio-ready expectations; demonstrates a thorough understanding of every outlined consideration.* |
-
-
-### The Data Science Process
-
-**Problem Statement**
-- Is it clear what the goal of the project is?
-- What type of model will be developed?
-- How will success be evaluated?
-- Is the scope of the project appropriate?
-- Is it clear who cares about this or why this is important to investigate?
-- Does the student consider the audience and the primary and secondary stakeholders?
-
-**Data Collection**
-- Was enough data gathered to generate a significant result?
-- Was data collected that was useful and relevant to the project?
-- Was data collection and storage optimized through custom functions, pipelines, and/or automation?
-- Was thought given to the server receiving the requests such as considering number of requests per second?
-
-**Data Cleaning and EDA**
-- Are missing values imputed/handled appropriately?
-- Are distributions examined and described?
-- Are outliers identified and addressed?
-- Are appropriate summary statistics provided?
-- Are steps taken during data cleaning and EDA framed appropriately?
-- Does the student address whether or not they are likely to be able to answer their problem statement with the provided data given what they've discovered during EDA?
-
-**Preprocessing and Modeling**
-- Is text data successfully converted to a matrix representation?
-- Are methods such as stop words, stemming, and lemmatization explored?
-- Does the student properly split and/or sample the data for validation/training purposes?
-- Does the student test and evaluate a variety of models to identify a production algorithm (**AT MINIMUM:** Bayes and one other model)?
-- Does the student defend their choice of production model relevant to the data at hand and the problem?
-- Does the student explain how the model works and evaluate its performance successes/downfalls?
-
-**Evaluation and Conceptual Understanding**
-- Does the student accurately identify and explain the baseline score?
-- Does the student select and use metrics relevant to the problem objective?
-- Does the student interpret the results of their model for purposes of inference?
-- Is domain knowledge demonstrated when interpreting results?
-- Does the student provide appropriate interpretation with regards to descriptive and inferential statistics?
-
-**Conclusion and Recommendations**
-- Does the student provide appropriate context to connect individual steps back to the overall project?
-- Is it clear how the final recommendations were reached?
-- Are the conclusions/recommendations clearly stated?
-- Does the conclusion answer the original problem statement?
-- Does the student address how findings of this research can be applied for the benefit of stakeholders?
-- Are future steps to move the project forward identified?
-
-
+This can been seen in the word cloud where student loan, debt, credit cards and tax were ones most mentioned.
